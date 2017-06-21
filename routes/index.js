@@ -5,7 +5,7 @@ var standupsController = require('../controllers/standupsController');
 
 
 router.get('/standupnotes', standupsController.get);
-router.get('/newnote', (req, res) => { res.render('newnote', {title:"title"}) });
+router.get('/newnote', (req, res) => { res.render('newnote', {title:"title", errorMessage: ""}) });
 router.post('/newnote', standupsController.post);
 
 module.exports = router;

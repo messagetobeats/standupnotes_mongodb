@@ -9,15 +9,22 @@ module.exports = {
                 var standup = new standupsModel({
                             name: req.body.name,
                             workYesterday:req.body.workYesterday,
-                            workToday:req.body.workYesterday,
-                            project: req.body.workYesterday,
+                            workToday:req.body.workToday,
+                            project: req.body.project,
                             impediment:req.body.impediment
                 });
 
                //mongoose will see if standupsModel --> standupsmodels collection exists in the db and if not it will create it.
                 standup.save((err, standup) => {
-                                if (err) return console.error(err);
-                                res.redirect("/newnote");
+                                if (err)
+                                {
+                                   res.render('newnote', {errorMessage: err});
+                                   console.log("ERROR " + err)
+                                }
+                                else
+                                {
+                                   res.redirect("/newnote");
+                                }
                 });
             },
 
